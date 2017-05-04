@@ -1,11 +1,12 @@
 {
   "name": "coprop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Copy property and descriptors.",
   "main": "coprop.deploy.js",
   "support": "coprop.support.js",
   "authors": [
-    "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
+    "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
   ],
   "license": "MIT",
   "keywords": [
@@ -22,26 +23,14 @@
     "test",
     "tests"
   ],
-  "resolutions": {
-    "kein": "^0.23.0",
-    "asyum": "^0.3.0",
-    "fnamed": "^0.6.0",
-    "annon": "^0.4.0",
-    "wichevr": "^0.9.0",
-    "fname": "^0.5.0",
-    "doubt": "^0.26.0",
-    "raze": "^0.29.0",
-    "mtch": "^0.1.0",
-    "stringe": "^0.3.0"
-  },
   "dependencies": {
     "asyum": "^0.3.0",
-    "cnfgrble": "^0.1.0",
-    "defyn": "^0.1.0",
-    "dscrb": "^0.1.0",
+    "cnfgrble": "^0.2.0",
+    "defyn": "^0.2.0",
+    "dscrb": "^0.2.0",
     "falzy": "^0.19.0",
     "kein": "^0.23.0",
     "protype": "^0.21.0",
-    "wrtble": "^0.1.0"
+    "wrtble": "^0.2.0"
   }
 }
