@@ -41,19 +41,34 @@
               	@end-module-configuration
               
               	@module-documentation:
-              		Copy property and descriptors.
+              		Copy property-value and descriptors.
+              
+              		If the property is non-configurable but writable
+              			it will just transfer the property-value.
               	@end-module-documentation
               
               	@include:
               		{
+              			"asyum": "asyum",
+              			"cnfgrble": "cnfgrble",
+              			"defyn": "defyn",
+              			"dscrb": "dscrb",
               			"falzy": "falzy",
-              			"protype": "protype"
+              			"kein": "kein",
+              			"protype": "protype",
+              			"wrtble": "wrtble"
               		}
               	@end-include
-              */var _defineProperty = require("babel-runtime/core-js/object/define-property");var _defineProperty2 = _interopRequireDefault(_defineProperty);var _getOwnPropertyDescriptor = require("babel-runtime/core-js/object/get-own-property-descriptor");var _getOwnPropertyDescriptor2 = _interopRequireDefault(_getOwnPropertyDescriptor);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+              */
 
+var asyum = require("asyum");
+var cnfgrble = require("cnfgrble");
+var defyn = require("defyn");
+var dscrb = require("dscrb");
 var falzy = require("falzy");
+var kein = require("kein");
 var protype = require("protype");
+var wrtble = require("wrtble");
 
 var coprop = function coprop(property, source, target) {
 	/*;
@@ -82,15 +97,37 @@ var coprop = function coprop(property, source, target) {
 		throw new Error("invalid target");
 	}
 
-	try {
-		var descriptor = (0, _getOwnPropertyDescriptor2.default)(source, property);
+	var descriptor = asyum({}, function flush() {});
+	var definition = asyum({}, function flush() {});
 
-		(0, _defineProperty2.default)(target, property, descriptor);
+	try {
+		/*;
+      	@note:
+      		If the property exists and writable but not configurable then just
+      			transfer the value.
+      	@end-note
+      */
+		if (kein(property, target) && !cnfgrble(property, target)) {
+			if (wrtble(property, target)) {
+				target[property] = source[property];
+			}
+
+			return target;
+		}
+
+		descriptor = dscrb(property, source);
+
+		definition = defyn(property, target).define(descriptor);
 
 		return target;
 
 	} catch (error) {
 		throw new Error("cannot copy property, " + error.stack);
+
+	} finally {
+		descriptor.flush();
+
+		definition.flush();
 	}
 };
 

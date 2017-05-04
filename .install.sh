@@ -1,7 +1,13 @@
 yarn add \
 babel-runtime \
+asyum \
+cnfgrble \
+defyn \
+dscrb \
 falzy \
+kein \
 protype \
+wrtble \
 --save && \
 yarn add \
 babel-cli \
@@ -12,7 +18,13 @@ source-map-loader \
 webpack \
 --dev && \
 bower install \
+asyum \
+cnfgrble \
+defyn \
+dscrb \
 falzy \
+kein \
 protype \
+wrtble \
 --save \
 --force-latest

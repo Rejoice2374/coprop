@@ -41,19 +41,34 @@
 	@end-module-configuration
 
 	@module-documentation:
-		Copy property and descriptors.
+		Copy property-value and descriptors.
+
+		If the property is non-configurable but writable
+			it will just transfer the property-value.
 	@end-module-documentation
 
 	@include:
 		{
+			"asyum": "asyum",
+			"cnfgrble": "cnfgrble",
+			"defyn": "defyn",
+			"dscrb": "dscrb",
 			"falzy": "falzy",
-			"protype": "protype"
+			"kein": "kein",
+			"protype": "protype",
+			"wrtble": "wrtble"
 		}
 	@end-include
 */
 
+const asyum = require( "asyum" );
+const cnfgrble = require( "cnfgrble" );
+const defyn = require( "defyn" );
+const dscrb = require( "dscrb" );
 const falzy = require( "falzy" );
+const kein = require( "kein" );
 const protype = require( "protype" );
+const wrtble = require( "wrtble" );
 
 const coprop = function coprop( property, source, target ){
 	/*;
@@ -82,15 +97,37 @@ const coprop = function coprop( property, source, target ){
 		throw new Error( "invalid target" );
 	}
 
-	try{
-		let descriptor = Object.getOwnPropertyDescriptor( source, property );
+	let descriptor = asyum( { }, function flush( ){ } );
+	let definition = asyum( { }, function flush( ){ } );
 
-		Object.defineProperty( target, property, descriptor );
+	try{
+		/*;
+			@note:
+				If the property exists and writable but not configurable then just
+					transfer the value.
+			@end-note
+		*/
+		if( kein( property, target ) && !cnfgrble( property, target ) ){
+			if( wrtble( property, target ) ){
+				target[ property ] = source[ property ];
+			}
+
+			return target;
+		}
+
+		descriptor = dscrb( property, source );
+
+		definition = defyn( property, target ).define( descriptor );
 
 		return target;
 
 	}catch( error ){
 		throw new Error( `cannot copy property, ${ error.stack }` );
+
+	}finally{
+		descriptor.flush( );
+
+		definition.flush( );
 	}
 };
 
