@@ -1,6 +1,6 @@
 {
   "name": "coprop",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Copy property and descriptors.",
   "main": "coprop.deploy.js",
   "support": "coprop.support.js",
@@ -24,13 +24,13 @@
     "tests"
   ],
   "dependencies": {
-    "asyum": "^0.5.0",
-    "cnfgrble": "^0.4.0",
-    "defyn": "^0.4.0",
-    "dscrb": "^0.4.0",
-    "falzy": "^0.19.0",
-    "kein": "^0.25.0",
-    "protype": "^0.21.0",
-    "wrtble": "^0.4.0"
+    "asyum": "^0.6.0",
+    "cnfgrble": "^0.5.0",
+    "defyn": "^0.5.0",
+    "dscrb": "^0.5.0",
+    "falzy": "^0.20.0",
+    "kein": "^0.26.0",
+    "protype": "^0.22.0",
+    "wrtble": "^0.5.0"
   }
 }
