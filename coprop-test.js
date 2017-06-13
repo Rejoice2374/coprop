@@ -2,8 +2,8 @@
 const assert = require( "assert" );
 const coprop = require( "./coprop.js" );
 
-var source = { "hello": "world" };
-var target = { "yeah": "world" };
+let source = { "hello": "world" };
+let target = { "yeah": "world" };
 
 coprop( "hello", source, target );
 
