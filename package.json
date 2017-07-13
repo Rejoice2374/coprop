@@ -1,6 +1,6 @@
 {
   "name": "coprop",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Copy property and descriptors.",
   "main": "coprop.js",
   "support": "coprop.support.js",
@@ -31,15 +31,15 @@
   },
   "homepage": "https://github.com/volkovasystems/coprop#readme",
   "dependencies": {
-    "asyum": "^0.7.0",
+    "asyum": "^0.8.0",
     "babel-runtime": "^6.23.0",
-    "cnfgrble": "^0.6.0",
-    "defyn": "^0.6.0",
-    "dscrb": "^0.5.0",
+    "cnfgrble": "^0.7.0",
+    "defyn": "^0.7.0",
+    "dscrb": "^0.6.0",
     "falzy": "^0.20.0",
-    "kein": "^0.26.0",
+    "kein": "^0.28.0",
     "protype": "^0.22.0",
-    "wrtble": "^0.6.0"
+    "wrtble": "^0.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -47,6 +47,6 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "source-map-loader": "^0.2.1",
-    "webpack": "^3.0.0"
+    "webpack": "^3.2.0"
   }
 }
