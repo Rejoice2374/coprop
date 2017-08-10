@@ -53,25 +53,21 @@
 
 	@include:
 		{
-			"asyum": "asyum",
 			"cnfgrble": "cnfgrble",
 			"defyn": "defyn",
 			"dscrb": "dscrb",
 			"falzy": "falzy",
 			"kein": "kein",
-			"protype": "protype",
 			"wrtble": "wrtble"
 		}
 	@end-include
 */
 
-const asyum = require( "asyum" );
 const cnfgrble = require( "cnfgrble" );
 const defyn = require( "defyn" );
 const dscrb = require( "dscrb" );
 const falzy = require( "falzy" );
 const kein = require( "kein" );
-const protype = require( "protype" );
 const wrtble = require( "wrtble" );
 
 const coprop = function coprop( property, source, target ){
@@ -89,7 +85,10 @@ const coprop = function coprop( property, source, target ){
 		@end-meta-configuration
 	*/
 
-	if( falzy( property ) || !protype( property, NUMBER + STRING + SYMBOL ) ){
+	if(
+		falzy( property )
+		|| ( typeof property != "number" && typeof property != "string" && typeof property != "symbol" )
+	){
 		throw new Error( "invalid property" );
 	}
 
@@ -101,38 +100,31 @@ const coprop = function coprop( property, source, target ){
 		throw new Error( "invalid target" );
 	}
 
-	let descriptor = asyum( { }, function flush( ){ } );
-	let definition = asyum( { }, function flush( ){ } );
+	/*;
+		@note:
+			If the property does not exist from the source, we cannot copy anything.
+		@end-note
+	*/
+	if( !kein( property, source ) ){
+		return target;
+	}
 
-	try{
-		/*;
-			@note:
-				If the property exists and writable but not configurable then just
-					transfer the value.
-			@end-note
-		*/
-		if( kein( property, target ) && !cnfgrble( property, target ) ){
-			if( wrtble( property, target ) ){
-				target[ property ] = source[ property ];
-			}
-
-			return target;
+	/*;
+		@note:
+			If the property is writable but not configurable then just transfer the value.
+		@end-note
+	*/
+	if( !cnfgrble( property, target ) ){
+		if( wrtble( property, target ) ){
+			target[ property ] = source[ property ];
 		}
 
-		descriptor = dscrb( property, source );
-
-		definition = defyn( property, target ).define( descriptor );
-
 		return target;
-
-	}catch( error ){
-		throw new Error( `cannot copy property, ${ error.stack }` );
-
-	}finally{
-		descriptor.flush( );
-
-		definition.flush( );
 	}
+
+	defyn( property, target ).define( dscrb( property, source ) );
+
+	return target;
 };
 
 module.exports = coprop;
