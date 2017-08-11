@@ -7,8 +7,8 @@ let target = { "yeah": "world" };
 
 coprop( "hello", source, target );
 
-assert.equal( "hello" in target, true, "should be true" );
+assert.equal( "hello" in target, true, "should be equal to true" );
 
-assert.equal( target.hello, "world", "should have value 'world'" );
+assert.equal( target.hello, "world", "should be equal to 'world'" );
 
 console.log( "ok" );
