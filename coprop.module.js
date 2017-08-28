@@ -87,7 +87,11 @@ const coprop = function coprop( property, source, target ){
 
 	if(
 		falzy( property )
-		|| ( typeof property != "number" && typeof property != "string" && typeof property != "symbol" )
+		|| (
+			typeof property != "number"
+			&& typeof property != "string"
+			&& typeof property != "symbol"
+		)
 	){
 		throw new Error( "invalid property" );
 	}
@@ -122,7 +126,7 @@ const coprop = function coprop( property, source, target ){
 		return target;
 	}
 
-	defyn( property, target ).define( dscrb( property, source ) );
+	defyn( property, target ).define( dscrb( property, source ).descriptor );
 
 	return target;
 };
