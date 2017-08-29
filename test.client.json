@@ -4,8 +4,8 @@
 		"failed": 0,
 		"skipped": 0
 	},
-	"start": "2017-08-29T07:55:47.454Z",
-	"end": "2017-08-29T07:56:24.031Z",
+	"start": "2017-08-29T08:09:00.449Z",
+	"end": "2017-08-29T08:09:43.169Z",
 	"capabilities": {
 		"browserName": "chrome",
 		"chromeOptions": {
@@ -31,37 +31,37 @@
 		{
 			"name": "coprop",
 			"duration": 0,
-			"start": "2017-08-29T07:56:23.716Z",
+			"start": "2017-08-29T08:09:42.857Z",
 			"tests": [],
 			"hooks": []
 		},
 		{
 			"name": "coprop",
-			"duration": 146,
-			"start": "2017-08-29T07:56:23.716Z",
-			"end": "2017-08-29T07:56:23.862Z",
+			"duration": 145,
+			"start": "2017-08-29T08:09:42.857Z",
+			"end": "2017-08-29T08:09:43.002Z",
 			"tests": [],
 			"hooks": [
 				{
-					"start": "2017-08-29T07:56:23.718Z",
-					"end": "2017-08-29T07:56:23.718Z",
+					"start": "2017-08-29T08:09:42.859Z",
+					"end": "2017-08-29T08:09:42.859Z",
 					"duration": 0,
 					"title": "\"before each\" hook",
 					"associatedSuite": "coprop",
 					"associatedTest": "should transfer 'property' source to target"
 				},
 				{
-					"start": "2017-08-29T07:56:23.861Z",
-					"end": "2017-08-29T07:56:23.862Z",
-					"duration": 1,
+					"start": "2017-08-29T08:09:43.001Z",
+					"end": "2017-08-29T08:09:43.001Z",
+					"duration": 0,
 					"title": "\"after each\" hook",
 					"associatedSuite": "coprop",
 					"associatedTest": "should transfer 'property' source to target"
 				},
 				{
-					"start": "2017-08-29T07:56:23.862Z",
-					"end": "2017-08-29T07:56:23.863Z",
-					"duration": 1,
+					"start": "2017-08-29T08:09:43.002Z",
+					"end": "2017-08-29T08:09:43.002Z",
+					"duration": 0,
 					"title": "\"after all\" hook",
 					"associatedSuite": "coprop"
 				}
@@ -69,15 +69,15 @@
 		},
 		{
 			"name": "`coprop( 'property', { 'property': 123 }, { } )`",
-			"duration": 145,
-			"start": "2017-08-29T07:56:23.717Z",
-			"end": "2017-08-29T07:56:23.862Z",
+			"duration": 144,
+			"start": "2017-08-29T08:09:42.858Z",
+			"end": "2017-08-29T08:09:43.002Z",
 			"tests": [
 				{
 					"name": "should transfer 'property' source to target",
-					"start": "2017-08-29T07:56:23.717Z",
-					"end": "2017-08-29T07:56:23.861Z",
-					"duration": 144,
+					"start": "2017-08-29T08:09:42.858Z",
+					"end": "2017-08-29T08:09:43.001Z",
+					"duration": 143,
 					"state": "pass"
 				}
 			],
