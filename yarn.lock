@@ -3039,8 +3039,8 @@ mem@^1.1.0:
     mimic-fn "^1.0.0"
 
 memoizee@^0.4.5:
-  version "0.4.6"
-  resolved "https://registry.yarnpkg.com/memoizee/-/memoizee-0.4.6.tgz#04393e4541373921a88274ffc86d084d288614bb"
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/memoizee/-/memoizee-0.4.7.tgz#52f65d01f10f5b81a6afbdaae982c2b2f599822d"
   dependencies:
     d "1"
     es5-ext "^0.10.13"
@@ -3734,11 +3734,11 @@ public-encrypt@^4.0.0:
     parse-asn1 "^5.0.0"
     randombytes "^2.0.1"
 
-punycode@1.3.2, punycode@^1.2.4:
+punycode@1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
 
-punycode@^1.4.1:
+punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
