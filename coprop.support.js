@@ -1,140 +1,136 @@
 "use strict";
 
 /*;
-              	@module-license:
-              		The MIT License (MIT)
-              		@mit-license
-              
-              		Copyright (@c) 2017 Richeve Siodina Bebedor
-              		@email: richeve.bebedor@gmail.com
-              
-              		Permission is hereby granted, free of charge, to any person obtaining a copy
-              		of this software and associated documentation files (the "Software"), to deal
-              		in the Software without restriction, including without limitation the rights
-              		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-              		copies of the Software, and to permit persons to whom the Software is
-              		furnished to do so, subject to the following conditions:
-              
-              		The above copyright notice and this permission notice shall be included in all
-              		copies or substantial portions of the Software.
-              
-              		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-              		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-              		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-              		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-              		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-              		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-              		SOFTWARE.
-              	@end-module-license
-              
-              	@module-configuration:
-              		{
-              			"package": "coprop",
-              			"path": "coprop/coprop.js",
-              			"file": "coprop.js",
-              			"module": "coprop",
-              			"author": "Richeve S. Bebedor",
-              			"eMail": "richeve.bebedor@gmail.com",
-              			"contributors": [
-              				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-              				"Vinse Vinalon <vinsevinalon@gmail.com>"
-              			],
-              			"repository": "https://github.com/volkovasystems/coprop.git",
-              			"global": true
-              		}
-              	@end-module-configuration
-              
-              	@module-documentation:
-              		Copy property-value and descriptors.
-              
-              		If the property is non-configurable but writable
-              			it will just transfer the property-value.
-              	@end-module-documentation
-              
-              	@include:
-              		{
-              			"asyum": "asyum",
-              			"cnfgrble": "cnfgrble",
-              			"defyn": "defyn",
-              			"dscrb": "dscrb",
-              			"falzy": "falzy",
-              			"kein": "kein",
-              			"protype": "protype",
-              			"wrtble": "wrtble"
-              		}
-              	@end-include
-              */
+	@module-license:
+		The MIT License (MIT)
+		@mit-license
 
-var asyum = require("asyum");
-var cnfgrble = require("cnfgrble");
-var defyn = require("defyn");
-var dscrb = require("dscrb");
-var falzy = require("falzy");
-var kein = require("kein");
-var protype = require("protype");
-var wrtble = require("wrtble");
+		Copyright (@c) 2017 Richeve Siodina Bebedor
+		@email: richeve.bebedor@gmail.com
 
-var coprop = function coprop(property, source, target) {
-	/*;
-                                                        	@meta-configuration:
-                                                        		{
-                                                        			"property:required": [
-                                                        				"number",
-                                                        				"string",
-                                                        				"symbol"
-                                                        			],
-                                                        			"source:required": "*",
-                                                        			"target:required": "*"
-                                                        		}
-                                                        	@end-meta-configuration
-                                                        */
+		Permission is hereby granted, free of charge, to any person obtaining a copy
+		of this software and associated documentation files (the "Software"), to deal
+		in the Software without restriction, including without limitation the rights
+		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+		copies of the Software, and to permit persons to whom the Software is
+		furnished to do so, subject to the following conditions:
 
-	if (falzy(property) || !protype(property, NUMBER + STRING + SYMBOL)) {
-		throw new Error("invalid property");
-	}
+		The above copyright notice and this permission notice shall be included in all
+		copies or substantial portions of the Software.
 
-	if (falzy(source)) {
-		throw new Error("invalid source");
-	}
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+		SOFTWARE.
+	@end-module-license
 
-	if (falzy(target)) {
-		throw new Error("invalid target");
-	}
-
-	var descriptor = asyum({}, function flush() {});
-	var definition = asyum({}, function flush() {});
-
-	try {
-		/*;
-      	@note:
-      		If the property exists and writable but not configurable then just
-      			transfer the value.
-      	@end-note
-      */
-		if (kein(property, target) && !cnfgrble(property, target)) {
-			if (wrtble(property, target)) {
-				target[property] = source[property];
-			}
-
-			return target;
+	@module-configuration:
+		{
+			"package": "coprop",
+			"path": "coprop/coprop.module.js",
+			"file": "coprop.module.js",
+			"module": "coprop",
+			"author": "Richeve S. Bebedor",
+			"eMail": "richeve.bebedor@gmail.com",
+			"contributors": [
+				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+				"Vinse Vinalon <vinsevinalon@gmail.com>"
+			],
+			"repository": "https://github.com/volkovasystems/coprop.git",
+			"global": true
 		}
+	@end-module-configuration
 
-		descriptor = dscrb(property, source);
+	@module-documentation:
+		Copy property-value and descriptors.
 
-		definition = defyn(property, target).define(descriptor);
+		If the property is non-configurable but writable
+			it will just transfer the property-value.
+	@end-module-documentation
 
-		return target;
+	@include:
+		{
+			"cnfgrble": "cnfgrble",
+			"defyn": "defyn",
+			"dscrb": "dscrb",
+			"falzy": "falzy",
+			"kein": "kein",
+			"wrtble": "wrtble"
+		}
+	@end-include
+*/var _typeof2=require("babel-runtime/helpers/typeof");var _typeof3=_interopRequireDefault(_typeof2);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
 
-	} catch (error) {
-		throw new Error("cannot copy property, " + error.stack);
+var cnfgrble=require("cnfgrble");
+var defyn=require("defyn");
+var dscrb=require("dscrb");
+var falzy=require("falzy");
+var kein=require("kein");
+var wrtble=require("wrtble");
 
-	} finally {
-		descriptor.flush();
+var coprop=function coprop(property,source,target){
+/*;
+		@meta-configuration:
+			{
+				"property:required": [
+					"number",
+					"string",
+					"symbol"
+				],
+				"source:required": "*",
+				"target:required": "*"
+			}
+		@end-meta-configuration
+	*/
 
-		definition.flush();
-	}
+if(
+falzy(property)||
+
+typeof property!="number"&&
+typeof property!="string"&&
+(typeof property==="undefined"?"undefined":(0,_typeof3.default)(property))!="symbol")
+
+{
+throw new Error("invalid property");
+}
+
+if(falzy(source)){
+throw new Error("invalid source");
+}
+
+if(falzy(target)){
+throw new Error("invalid target");
+}
+
+/*;
+		@note:
+			If the property does not exist from the source, we cannot copy anything.
+		@end-note
+	*/
+if(!kein(property,source)){
+return target;
+}
+
+/*;
+		@note:
+			If the property is writable but not configurable then just transfer the value.
+		@end-note
+	*/
+if(kein(property,target)&&!cnfgrble(property,target)){
+if(wrtble(property,target)){
+target[property]=source[property];
+}
+
+return target;
+}
+
+defyn(property,target).define(dscrb(property,source).descriptor);
+
+return target;
 };
 
-module.exports = coprop;
-
+module.exports=coprop;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvcHJvcC5zdXBwb3J0LmpzIl0sIm5hbWVzIjpbImNuZmdyYmxlIiwicmVxdWlyZSIsImRlZnluIiwiZHNjcmIiLCJmYWx6eSIsImtlaW4iLCJ3cnRibGUiLCJjb3Byb3AiLCJwcm9wZXJ0eSIsInNvdXJjZSIsInRhcmdldCIsIkVycm9yIiwiZGVmaW5lIiwiZGVzY3JpcHRvciIsIm1vZHVsZSIsImV4cG9ydHMiXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUErREEsR0FBTUEsVUFBV0MsUUFBUyxVQUFULENBQWpCO0FBQ0EsR0FBTUMsT0FBUUQsUUFBUyxPQUFULENBQWQ7QUFDQSxHQUFNRSxPQUFRRixRQUFTLE9BQVQsQ0FBZDtBQUNBLEdBQU1HLE9BQVFILFFBQVMsT0FBVCxDQUFkO0FBQ0EsR0FBTUksTUFBT0osUUFBUyxNQUFULENBQWI7QUFDQSxHQUFNSyxRQUFTTCxRQUFTLFFBQVQsQ0FBZjs7QUFFQSxHQUFNTSxRQUFTLFFBQVNBLE9BQVQsQ0FBaUJDLFFBQWpCLENBQTJCQyxNQUEzQixDQUFtQ0MsTUFBbkMsQ0FBMkM7QUFDekQ7Ozs7Ozs7Ozs7Ozs7O0FBY0E7QUFDQ04sTUFBT0ksUUFBUDs7QUFFQyxNQUFPQSxTQUFQLEVBQW1CLFFBQW5CO0FBQ0csTUFBT0EsU0FBUCxFQUFtQixRQUR0QjtBQUVHLE9BQU9BLFNBQVAsZ0RBQU9BLFFBQVAsSUFBbUIsUUFMeEI7O0FBT0M7QUFDQSxLQUFNLElBQUlHLE1BQUosQ0FBVyxrQkFBWCxDQUFOO0FBQ0E7O0FBRUQsR0FBSVAsTUFBT0ssTUFBUCxDQUFKLENBQXFCO0FBQ3BCLEtBQU0sSUFBSUUsTUFBSixDQUFXLGdCQUFYLENBQU47QUFDQTs7QUFFRCxHQUFJUCxNQUFPTSxNQUFQLENBQUosQ0FBcUI7QUFDcEIsS0FBTSxJQUFJQyxNQUFKLENBQVcsZ0JBQVgsQ0FBTjtBQUNBOztBQUVEOzs7OztBQUtBLEdBQUksQ0FBQ04sS0FBTUcsUUFBTixDQUFnQkMsTUFBaEIsQ0FBTCxDQUErQjtBQUM5QixNQUFPQyxPQUFQO0FBQ0E7O0FBRUQ7Ozs7O0FBS0EsR0FBSUwsS0FBTUcsUUFBTixDQUFnQkUsTUFBaEIsR0FBNEIsQ0FBQ1YsU0FBVVEsUUFBVixDQUFvQkUsTUFBcEIsQ0FBakMsQ0FBK0Q7QUFDOUQsR0FBSUosT0FBUUUsUUFBUixDQUFrQkUsTUFBbEIsQ0FBSixDQUFnQztBQUMvQkEsT0FBUUYsUUFBUixFQUFxQkMsT0FBUUQsUUFBUixDQUFyQjtBQUNBOztBQUVELE1BQU9FLE9BQVA7QUFDQTs7QUFFRFIsTUFBT00sUUFBUCxDQUFpQkUsTUFBakIsRUFBMEJFLE1BQTFCLENBQWtDVCxNQUFPSyxRQUFQLENBQWlCQyxNQUFqQixFQUEwQkksVUFBNUQ7O0FBRUEsTUFBT0gsT0FBUDtBQUNBLENBM0REOztBQTZEQUksT0FBT0MsT0FBUCxDQUFpQlIsTUFBakIiLCJmaWxlIjoiY29wcm9wLnN1cHBvcnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJcInVzZSBzdHJpY3RcIjtcblxuLyo7XG5cdEBtb2R1bGUtbGljZW5zZTpcblx0XHRUaGUgTUlUIExpY2Vuc2UgKE1JVClcblx0XHRAbWl0LWxpY2Vuc2VcblxuXHRcdENvcHlyaWdodCAoQGMpIDIwMTcgUmljaGV2ZSBTaW9kaW5hIEJlYmVkb3Jcblx0XHRAZW1haWw6IHJpY2hldmUuYmViZWRvckBnbWFpbC5jb21cblxuXHRcdFBlcm1pc3Npb24gaXMgaGVyZWJ5IGdyYW50ZWQsIGZyZWUgb2YgY2hhcmdlLCB0byBhbnkgcGVyc29uIG9idGFpbmluZyBhIGNvcHlcblx0XHRvZiB0aGlzIHNvZnR3YXJlIGFuZCBhc3NvY2lhdGVkIGRvY3VtZW50YXRpb24gZmlsZXMgKHRoZSBcIlNvZnR3YXJlXCIpLCB0byBkZWFsXG5cdFx0aW4gdGhlIFNvZnR3YXJlIHdpdGhvdXQgcmVzdHJpY3Rpb24sIGluY2x1ZGluZyB3aXRob3V0IGxpbWl0YXRpb24gdGhlIHJpZ2h0c1xuXHRcdHRvIHVzZSwgY29weSwgbW9kaWZ5LCBtZXJnZSwgcHVibGlzaCwgZGlzdHJpYnV0ZSwgc3VibGljZW5zZSwgYW5kL29yIHNlbGxcblx0XHRjb3BpZXMgb2YgdGhlIFNvZnR3YXJlLCBhbmQgdG8gcGVybWl0IHBlcnNvbnMgdG8gd2hvbSB0aGUgU29mdHdhcmUgaXNcblx0XHRmdXJuaXNoZWQgdG8gZG8gc28sIHN1YmplY3QgdG8gdGhlIGZvbGxvd2luZyBjb25kaXRpb25zOlxuXG5cdFx0VGhlIGFib3ZlIGNvcHlyaWdodCBub3RpY2UgYW5kIHRoaXMgcGVybWlzc2lvbiBub3RpY2Ugc2hhbGwgYmUgaW5jbHVkZWQgaW4gYWxsXG5cdFx0Y29waWVzIG9yIHN1YnN0YW50aWFsIHBvcnRpb25zIG9mIHRoZSBTb2Z0d2FyZS5cblxuXHRcdFRIRSBTT0ZUV0FSRSBJUyBQUk9WSURFRCBcIkFTIElTXCIsIFdJVEhPVVQgV0FSUkFOVFkgT0YgQU5ZIEtJTkQsIEVYUFJFU1MgT1Jcblx0XHRJTVBMSUVELCBJTkNMVURJTkcgQlVUIE5PVCBMSU1JVEVEIFRPIFRIRSBXQVJSQU5USUVTIE9GIE1FUkNIQU5UQUJJTElUWSxcblx0XHRGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRSBBTkQgTk9OSU5GUklOR0VNRU5ULiBJTiBOTyBFVkVOVCBTSEFMTCBUSEVcblx0XHRBVVRIT1JTIE9SIENPUFlSSUdIVCBIT0xERVJTIEJFIExJQUJMRSBGT1IgQU5ZIENMQUlNLCBEQU1BR0VTIE9SIE9USEVSXG5cdFx0TElBQklMSVRZLCBXSEVUSEVSIElOIEFOIEFDVElPTiBPRiBDT05UUkFDVCwgVE9SVCBPUiBPVEhFUldJU0UsIEFSSVNJTkcgRlJPTSxcblx0XHRPVVQgT0YgT1IgSU4gQ09OTkVDVElPTiBXSVRIIFRIRSBTT0ZUV0FSRSBPUiBUSEUgVVNFIE9SIE9USEVSIERFQUxJTkdTIElOIFRIRVxuXHRcdFNPRlRXQVJFLlxuXHRAZW5kLW1vZHVsZS1saWNlbnNlXG5cblx0QG1vZHVsZS1jb25maWd1cmF0aW9uOlxuXHRcdHtcblx0XHRcdFwicGFja2FnZVwiOiBcImNvcHJvcFwiLFxuXHRcdFx0XCJwYXRoXCI6IFwiY29wcm9wL2NvcHJvcC5tb2R1bGUuanNcIixcblx0XHRcdFwiZmlsZVwiOiBcImNvcHJvcC5tb2R1bGUuanNcIixcblx0XHRcdFwibW9kdWxlXCI6IFwiY29wcm9wXCIsXG5cdFx0XHRcImF1dGhvclwiOiBcIlJpY2hldmUgUy4gQmViZWRvclwiLFxuXHRcdFx0XCJlTWFpbFwiOiBcInJpY2hldmUuYmViZWRvckBnbWFpbC5jb21cIixcblx0XHRcdFwiY29udHJpYnV0b3JzXCI6IFtcblx0XHRcdFx0XCJKb2huIExlbm9uIE1hZ2hhbm95IDxqb2hubGVub25tYWdoYW5veUBnbWFpbC5jb20+XCIsXG5cdFx0XHRcdFwiVmluc2UgVmluYWxvbiA8dmluc2V2aW5hbG9uQGdtYWlsLmNvbT5cIlxuXHRcdFx0XSxcblx0XHRcdFwicmVwb3NpdG9yeVwiOiBcImh0dHBzOi8vZ2l0aHViLmNvbS92b2xrb3Zhc3lzdGVtcy9jb3Byb3AuZ2l0XCIsXG5cdFx0XHRcImdsb2JhbFwiOiB0cnVlXG5cdFx0fVxuXHRAZW5kLW1vZHVsZS1jb25maWd1cmF0aW9uXG5cblx0QG1vZHVsZS1kb2N1bWVudGF0aW9uOlxuXHRcdENvcHkgcHJvcGVydHktdmFsdWUgYW5kIGRlc2NyaXB0b3JzLlxuXG5cdFx0SWYgdGhlIHByb3BlcnR5IGlzIG5vbi1jb25maWd1cmFibGUgYnV0IHdyaXRhYmxlXG5cdFx0XHRpdCB3aWxsIGp1c3QgdHJhbnNmZXIgdGhlIHByb3BlcnR5LXZhbHVlLlxuXHRAZW5kLW1vZHVsZS1kb2N1bWVudGF0aW9uXG5cblx0QGluY2x1ZGU6XG5cdFx0e1xuXHRcdFx0XCJjbmZncmJsZVwiOiBcImNuZmdyYmxlXCIsXG5cdFx0XHRcImRlZnluXCI6IFwiZGVmeW5cIixcblx0XHRcdFwiZHNjcmJcIjogXCJkc2NyYlwiLFxuXHRcdFx0XCJmYWx6eVwiOiBcImZhbHp5XCIsXG5cdFx0XHRcImtlaW5cIjogXCJrZWluXCIsXG5cdFx0XHRcIndydGJsZVwiOiBcIndydGJsZVwiXG5cdFx0fVxuXHRAZW5kLWluY2x1ZGVcbiovXG5cbmNvbnN0IGNuZmdyYmxlID0gcmVxdWlyZSggXCJjbmZncmJsZVwiICk7XG5jb25zdCBkZWZ5biA9IHJlcXVpcmUoIFwiZGVmeW5cIiApO1xuY29uc3QgZHNjcmIgPSByZXF1aXJlKCBcImRzY3JiXCIgKTtcbmNvbnN0IGZhbHp5ID0gcmVxdWlyZSggXCJmYWx6eVwiICk7XG5jb25zdCBrZWluID0gcmVxdWlyZSggXCJrZWluXCIgKTtcbmNvbnN0IHdydGJsZSA9IHJlcXVpcmUoIFwid3J0YmxlXCIgKTtcblxuY29uc3QgY29wcm9wID0gZnVuY3Rpb24gY29wcm9wKCBwcm9wZXJ0eSwgc291cmNlLCB0YXJnZXQgKXtcblx0Lyo7XG5cdFx0QG1ldGEtY29uZmlndXJhdGlvbjpcblx0XHRcdHtcblx0XHRcdFx0XCJwcm9wZXJ0eTpyZXF1aXJlZFwiOiBbXG5cdFx0XHRcdFx0XCJudW1iZXJcIixcblx0XHRcdFx0XHRcInN0cmluZ1wiLFxuXHRcdFx0XHRcdFwic3ltYm9sXCJcblx0XHRcdFx0XSxcblx0XHRcdFx0XCJzb3VyY2U6cmVxdWlyZWRcIjogXCIqXCIsXG5cdFx0XHRcdFwidGFyZ2V0OnJlcXVpcmVkXCI6IFwiKlwiXG5cdFx0XHR9XG5cdFx0QGVuZC1tZXRhLWNvbmZpZ3VyYXRpb25cblx0Ki9cblxuXHRpZihcblx0XHRmYWx6eSggcHJvcGVydHkgKVxuXHRcdHx8IChcblx0XHRcdHR5cGVvZiBwcm9wZXJ0eSAhPSBcIm51bWJlclwiXG5cdFx0XHQmJiB0eXBlb2YgcHJvcGVydHkgIT0gXCJzdHJpbmdcIlxuXHRcdFx0JiYgdHlwZW9mIHByb3BlcnR5ICE9IFwic3ltYm9sXCJcblx0XHQpXG5cdCl7XG5cdFx0dGhyb3cgbmV3IEVycm9yKCBcImludmFsaWQgcHJvcGVydHlcIiApO1xuXHR9XG5cblx0aWYoIGZhbHp5KCBzb3VyY2UgKSApe1xuXHRcdHRocm93IG5ldyBFcnJvciggXCJpbnZhbGlkIHNvdXJjZVwiICk7XG5cdH1cblxuXHRpZiggZmFsenkoIHRhcmdldCApICl7XG5cdFx0dGhyb3cgbmV3IEVycm9yKCBcImludmFsaWQgdGFyZ2V0XCIgKTtcblx0fVxuXG5cdC8qO1xuXHRcdEBub3RlOlxuXHRcdFx0SWYgdGhlIHByb3BlcnR5IGRvZXMgbm90IGV4aXN0IGZyb20gdGhlIHNvdXJjZSwgd2UgY2Fubm90IGNvcHkgYW55dGhpbmcuXG5cdFx0QGVuZC1ub3RlXG5cdCovXG5cdGlmKCAha2VpbiggcHJvcGVydHksIHNvdXJjZSApICl7XG5cdFx0cmV0dXJuIHRhcmdldDtcblx0fVxuXG5cdC8qO1xuXHRcdEBub3RlOlxuXHRcdFx0SWYgdGhlIHByb3BlcnR5IGlzIHdyaXRhYmxlIGJ1dCBub3QgY29uZmlndXJhYmxlIHRoZW4ganVzdCB0cmFuc2ZlciB0aGUgdmFsdWUuXG5cdFx0QGVuZC1ub3RlXG5cdCovXG5cdGlmKCBrZWluKCBwcm9wZXJ0eSwgdGFyZ2V0ICkgJiYgIWNuZmdyYmxlKCBwcm9wZXJ0eSwgdGFyZ2V0ICkgKXtcblx0XHRpZiggd3J0YmxlKCBwcm9wZXJ0eSwgdGFyZ2V0ICkgKXtcblx0XHRcdHRhcmdldFsgcHJvcGVydHkgXSA9IHNvdXJjZVsgcHJvcGVydHkgXTtcblx0XHR9XG5cblx0XHRyZXR1cm4gdGFyZ2V0O1xuXHR9XG5cblx0ZGVmeW4oIHByb3BlcnR5LCB0YXJnZXQgKS5kZWZpbmUoIGRzY3JiKCBwcm9wZXJ0eSwgc291cmNlICkuZGVzY3JpcHRvciApO1xuXG5cdHJldHVybiB0YXJnZXQ7XG59O1xuXG5tb2R1bGUuZXhwb3J0cyA9IGNvcHJvcDtcbiJdfQ==
 //# sourceMappingURL=coprop.support.js.map
