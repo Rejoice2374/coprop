@@ -1,0 +1,87 @@
+{
+	"state": {
+		"passed": 1,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-08-29T07:55:47.454Z",
+	"end": "2017-08-29T07:56:24.031Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": {
+			"proxyType": "direct"
+		}
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd",
+		"slow": 0
+	},
+	"suites": [
+		{
+			"name": "coprop",
+			"duration": 0,
+			"start": "2017-08-29T07:56:23.716Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "coprop",
+			"duration": 146,
+			"start": "2017-08-29T07:56:23.716Z",
+			"end": "2017-08-29T07:56:23.862Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-08-29T07:56:23.718Z",
+					"end": "2017-08-29T07:56:23.718Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "coprop",
+					"associatedTest": "should transfer 'property' source to target"
+				},
+				{
+					"start": "2017-08-29T07:56:23.861Z",
+					"end": "2017-08-29T07:56:23.862Z",
+					"duration": 1,
+					"title": "\"after each\" hook",
+					"associatedSuite": "coprop",
+					"associatedTest": "should transfer 'property' source to target"
+				},
+				{
+					"start": "2017-08-29T07:56:23.862Z",
+					"end": "2017-08-29T07:56:23.863Z",
+					"duration": 1,
+					"title": "\"after all\" hook",
+					"associatedSuite": "coprop"
+				}
+			]
+		},
+		{
+			"name": "`coprop( 'property', { 'property': 123 }, { } )`",
+			"duration": 145,
+			"start": "2017-08-29T07:56:23.717Z",
+			"end": "2017-08-29T07:56:23.862Z",
+			"tests": [
+				{
+					"name": "should transfer 'property' source to target",
+					"start": "2017-08-29T07:56:23.717Z",
+					"end": "2017-08-29T07:56:23.861Z",
+					"duration": 144,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}

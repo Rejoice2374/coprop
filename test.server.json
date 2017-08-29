@@ -1,0 +1,32 @@
+{
+	"stats": {
+		"suites": 2,
+		"tests": 1,
+		"passes": 1,
+		"pending": 0,
+		"failures": 0,
+		"start": "2017-08-29T07:55:46.236Z",
+		"end": "2017-08-29T07:55:46.246Z",
+		"duration": 10
+	},
+	"tests": [
+		{
+			"title": "should transfer 'property' source to target",
+			"fullTitle": "coprop `coprop( 'property', { 'property': 123 }, { 'hello': 'world' } )` should transfer 'property' source to target",
+			"duration": 6,
+			"currentRetry": 0,
+			"err": {}
+		}
+	],
+	"pending": [],
+	"failures": [],
+	"passes": [
+		{
+			"title": "should transfer 'property' source to target",
+			"fullTitle": "coprop `coprop( 'property', { 'property': 123 }, { 'hello': 'world' } )` should transfer 'property' source to target",
+			"duration": 6,
+			"currentRetry": 0,
+			"err": {}
+		}
+	]
+}
